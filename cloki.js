@@ -9,8 +9,9 @@ var debug = process.env.DEBUG || false;
 var http_user = process.env.CLOKI_LOGIN || false;
 var http_pass = process.env.CLOKI_PASSWORD || false;
 
-
-var DATABASE = require('./lib/db/clickhouse');
+// Backend Selection: clickhouse, cassandra
+var backend = process.env.CLOKI_BACKEND || 'clickhouse'; 
+var DATABASE = require('./lib/db/'+backend);
 var UTILS = require('./lib/utils');
 
 /* ProtoBuf Helper */
